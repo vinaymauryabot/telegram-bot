@@ -1,0 +1,9 @@
+{
+  "name": "telegram-bot",
+  "version": "1.0.0",
+  "description": "Simple keyword reply bot",
+  "main": "index.js",
+  "dependencies": {
+    "node-telegram-bot-api": "^0.61.0"
+  }
+}
