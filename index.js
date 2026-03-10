@@ -28,7 +28,7 @@ bot.on("message",(msg)=>{
     [
      {
       text:"GET FILE",
-      url:`https://t.me/${bot.username}?start=${encodeURIComponent(name)}`
+      url:`https://t.me/MrVinay_bot?start=${encodeURIComponent(name)}`
      }
     ]
    ]
