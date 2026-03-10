@@ -35,7 +35,7 @@ bot.on("message", async (msg)=>{
     [
      {
       text:"GET FILE",
-      url:`https://t.me/${bot.username}?start=${keyword}`
+      url:`https://t.me/MrVinay_bot?start=${encodeURIComponent(name)}`
      }
     ]
    ]
