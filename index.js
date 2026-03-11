@@ -8,7 +8,7 @@ const app = express()
 
 // SETTINGS
 const CHANNEL_ID = -1003892111256
-const VERIFY_LINK = "https://tpi.li/verify"
+const VERIFY_LINK = "https://link-center.net/4165973/LUdQfIWNaQzO"
 const ADMIN_ID = 5595411143   // apna telegram id dalna
 
 // verification system
