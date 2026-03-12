@@ -128,3 +128,26 @@ app.get("/",(req,res)=>{
 })
 
 app.listen(3000)
+const fs = require("fs")
+
+let files = JSON.parse(fs.readFileSync("./files.json"))
+let verified = JSON.parse(fs.readFileSync("./verified.json"))
+function isVerified(user){
+
+ if(!verified[user]) return false
+
+ return Date.now() < verified[user]
+
+}
+
+bot.onText(/\/start verified/, (msg)=>{
+
+const user = msg.from.id
+
+verified[user] = Date.now() + 28800000
+
+fs.writeFileSync("./verified.json",JSON.stringify(verified,null,2))
+
+bot.sendMessage(msg.chat.id,"✅ Verification successful\nAccess valid for 8 hours")
+
+})
