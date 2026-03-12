@@ -151,3 +151,31 @@ fs.writeFileSync("./verified.json",JSON.stringify(verified,null,2))
 bot.sendMessage(msg.chat.id,"✅ Verification successful\nAccess valid for 8 hours")
 
 })
+bot.on("message", async (msg)=>{
+
+ if(!msg.text) return
+ if(msg.text.startsWith("/")) return
+
+ const keyword = msg.text.toLowerCase()
+ const chatId = msg.chat.id
+
+ if(files[keyword]){
+
+ let results = files[keyword]
+
+ let buttons = results.map((f,i)=>[
+ {
+  text:`${i+1}. ${f.name}`,
+  callback_data:`get_${keyword}_${i}`
+ }
+ ])
+
+ bot.sendMessage(chatId,
+ `🔎 Results for: ${keyword}`,
+ {
+  reply_markup:{ inline_keyboard:buttons }
+ })
+
+ }
+
+})
