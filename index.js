@@ -179,3 +179,48 @@ bot.on("message", async (msg)=>{
  }
 
 })
+bot.on("callback_query", async (q)=>{
+
+const data = q.data
+const user = q.from.id
+const chat = q.message.chat.id
+
+if(data.startsWith("get_")){
+
+ if(!isVerified(user)){
+
+  bot.sendMessage(chat,
+  "🔐 You need to verify to get this file",
+  {
+   reply_markup:{
+    inline_keyboard:[
+     [
+      {
+       text:"VERIFY",
+       url:"https://link-center.net/4165973/LUdQfIWNaQzO"
+      }
+     ]
+    ]
+   }
+  })
+
+  return
+ }
+
+ let parts = data.split("_")
+ let key = parts[1]
+ let index = parts[2]
+
+ let file = files[key][index]
+
+ const sent = await bot.sendDocument(chat,file.file_id,{
+  caption:"⚠ This file will be deleted in 5 minutes. Save or forward it."
+ })
+
+ setTimeout(()=>{
+  bot.deleteMessage(chat,sent.message_id)
+ },300000)
+
+}
+
+})
