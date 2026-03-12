@@ -1,3 +1,6 @@
+const express = require("express");
+const app = express();
+
 const bot = new TelegramBot(token, { polling: { interval: 3000, autoStart: true } });
 
 const app = express()
@@ -228,4 +231,13 @@ app.get("/", (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
+});
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Bot is running");
+});
+
+app.listen(PORT, () => {
+  console.log(`Server running on ${PORT}`);
 });
